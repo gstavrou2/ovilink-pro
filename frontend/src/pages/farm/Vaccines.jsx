@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/api'
+import { api } from '../../lib/api'
 import { useAuth } from '../../contexts/AuthContext'
 import { differenceInDays, parseISO } from 'date-fns'
 import { formatDate, exportTableToExcel, exportToPDF } from '../../lib/exports'

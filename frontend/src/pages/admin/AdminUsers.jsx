@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/api'
+import { api } from '../../lib/api'
 import { formatDate } from '../../lib/exports'
 
 const ROLES = ['admin', 'manager', 'viewer']

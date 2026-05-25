@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { supabase } from '../../lib/api'
+import { api } from '../../lib/api'
 import { formatDate } from '../../lib/exports'
 import { useAuth } from '../../contexts/AuthContext'
 import { addDays, parseISO, format } from 'date-fns'

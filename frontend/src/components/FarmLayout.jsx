@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { supabase } from '../lib/api'
-
+import { api } from '../lib/api'
 const navItems = [
   { to: '/', icon: 'ti-layout-dashboard', label: 'Πίνακας Ελέγχου', exact: true },
   { to: '/animals', icon: 'ti-paw', label: 'Ζώα' },

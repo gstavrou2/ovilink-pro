@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/api'
+import { api } from '../../lib/api'
 import { useAuth } from '../../contexts/AuthContext'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 import { exportMultiSheetExcel, exportToPDF, formatDate } from '../../lib/exports'

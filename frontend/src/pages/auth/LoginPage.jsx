@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 
 export default function LoginPage() {
-  const { signIn } = useAuth()
+  const { login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -12,7 +12,8 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError(''); setLoading(true)
-    const { error } = await signIn(email, password)
+    await login(email, password)
+
     if (error) setError('Λάθος email ή κωδικός πρόσβασης.')
     setLoading(false)
   }

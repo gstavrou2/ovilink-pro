@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/api'
+import { api } from '../../lib/api'
 import { useAuth } from '../../contexts/AuthContext'
 
 const STATUS_LABELS = { active: 'Ενεργή', dry: 'Ξηρή', pregnant: 'Έγκυος', sold: 'Πωλήθηκε', dead: 'Νεκρή' }
