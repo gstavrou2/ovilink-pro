@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const supabase = require('../db/supabase')
+const { supabase } = require('../db/supabase')
 
 // Verify JWT token
 const authenticate = async (req, res, next) => {

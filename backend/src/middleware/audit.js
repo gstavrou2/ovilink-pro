@@ -1,4 +1,4 @@
-const supabase = require('../db/supabase')
+const { supabase } = require('../db/supabase')
 
 const auditLog = (action, resource) => {
   return async (req, res, next) => {

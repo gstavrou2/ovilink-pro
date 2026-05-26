@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 const { v4: uuidv4 } = require('uuid')
-const supabase = require('../db/supabase')
+const { supabase } = require('../db/supabase')
 
 const MODULES = [
   'animals',
