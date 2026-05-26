@@ -2,7 +2,7 @@ const express = require('express')
 const { authenticate, adminOnly, farmIsolation } = require('../middleware/auth')
 const licenseService = require('../services/licenseService')
 const emailService = require('../services/emailService')
-const supabase = require('../db/supabase')
+const { supabase } = require('../db/supabase')
 
 const router = express.Router()
 router.use(authenticate)

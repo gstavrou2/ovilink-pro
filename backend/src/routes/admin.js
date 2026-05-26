@@ -1,6 +1,6 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
-const supabase = require('../db/supabase')
+const { supabase } = require('../db/supabase')
 const { authenticate, superAdmin } = require('../middleware/auth')
 const licenseService = require('../services/licenseService')
 const emailService = require('../services/emailService')

@@ -1,5 +1,5 @@
 const express = require('express')
-const supabase = require('../db/supabase')
+const { supabase } = require('../db/supabase')
 const { authenticate, managerOnly, farmIsolation } = require('../middleware/auth')
 const router = express.Router()
 router.use(authenticate, farmIsolation)
