@@ -27,15 +27,16 @@ function generateTokens(userId) {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email και κωδικός απαιτούνται' })
-    }
-
+    console.log('Login attempt:', email)
+    
     const { data: user, error } = await supabase
-  .from('user_profiles')
-  .select('*')
-  .eq('email', email.toLowerCase())
-  .single()
+      .from('user_profiles')
+      .select('*')
+      .eq('email', email.toLowerCase())
+      .single()
+
+    console.log('User found:', user ? 'yes' : 'no')
+    console.log('Error:', error)
 
     if (error || !user) {
       return res.status(401).json({ error: 'Λάθος email ή κωδικός' })
