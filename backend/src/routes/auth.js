@@ -32,10 +32,10 @@ router.post('/login', async (req, res) => {
     }
 
     const { data: user, error } = await supabase
-      .from('user-profiles')
-      .select('*, farms(id,name)')
-      .eq('email', email.toLowerCase())
-      .single()
+  .from('user_profiles')
+  .select('*')
+  .eq('email', email.toLowerCase())
+  .single()
 
     if (error || !user) {
       return res.status(401).json({ error: 'Λάθος email ή κωδικός' })
