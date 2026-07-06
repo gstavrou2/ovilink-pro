@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
     }
 
     // Update last login
-    await supabase.from('users').update({ last_login: new Date() }).eq('id', user.id)
+    await supabase.from('user_profiles').update({ last_login: new Date() }).eq('id', user.id)
 
     const { accessToken, refreshToken } = generateTokens(user.id)
 
@@ -139,7 +139,7 @@ router.post('/forgot-password', async (req, res) => {
     const { email } = req.body
     if (!email) return res.status(400).json({ error: 'Email απαιτείται' })
 
-    const { data: user } = await supabase.from('users').select('id,email,name').eq('email', email.toLowerCase()).single()
+    const { data: user } = await supabase.from('user_profiles').select('id,email,name').eq('email', email.toLowerCase()).single()
 
     // Always return success (security best practice)
     if (user) {
@@ -172,7 +172,7 @@ router.post('/reset-password', async (req, res) => {
     }
 
     const password_hash = await bcrypt.hash(password, 12)
-    await supabase.from('users').update({ password_hash }).eq('id', tokenRecord.user_id)
+    await supabase.from('user_profiles').update({ password_hash }).eq('id', tokenRecord.user_id)
     await supabase.from('password_reset_tokens').delete().eq('token', token)
 
     res.json({ message: 'Ο κωδικός άλλαξε επιτυχώς' })
@@ -194,12 +194,12 @@ router.post('/change-password', authenticate, async (req, res) => {
     if (!currentPassword || !newPassword) return res.status(400).json({ error: 'Απαιτούνται και οι δύο κωδικοί' })
     if (newPassword.length < 8) return res.status(400).json({ error: 'Ο νέος κωδικός πρέπει να έχει τουλάχιστον 8 χαρακτήρες' })
 
-    const { data: user } = await supabase.from('users').select('password_hash').eq('id', req.user.id).single()
+    const { data: user } = await supabase.from('user_profiles').select('password_hash').eq('id', req.user.id).single()
     const valid = await bcrypt.compare(currentPassword, user.password_hash)
     if (!valid) return res.status(400).json({ error: 'Ο τρέχων κωδικός δεν είναι σωστός' })
 
     const password_hash = await bcrypt.hash(newPassword, 12)
-    await supabase.from('users').update({ password_hash }).eq('id', req.user.id)
+    await supabase.from('user_profiles').update({ password_hash }).eq('id', req.user.id)
 
     res.json({ message: 'Ο κωδικός άλλαξε επιτυχώς' })
   } catch (err) {
