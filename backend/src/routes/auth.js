@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
     }
 
     const { data: user, error } = await supabase
-      .from('users')
+      .from('user-profiles')
       .select('*, farms(id,name)')
       .eq('email', email.toLowerCase())
       .single()
